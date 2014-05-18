@@ -12,7 +12,7 @@
     <finalName>tihai</finalName>
   </build>
   <properties>
-		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- 数据库相关配置 -->
 		<jdbc.initialPoolSize>5</jdbc.initialPoolSize>
