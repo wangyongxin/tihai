@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tihai.dao.ArticleDao" >
+	
+  <resultMap id="BaseResultMap" type="com.tihai.entity.Article" >
+	<result column="ID" property="id" />
+	<result column="CREATEDATE" property="createDate" />
+	<result column="MODIFYDATE" property="modifyDate" />
+	<result column="TITLE" property="title" />
+	<result column="AUTHOR" property="author" />
+	<result column="CONTENT" property="content" />
+	<result column="SEOTITLE" property="seoTitle" />
+	<result column="SEOKEYWORDS" property="seoKeywords" />
+	<result column="SEODESCRIPTION" property="seoDescription" />
+	<result column="ISPUBLICATION" property="isPublication" />
+	<result column="ISTOP" property="isTop" />
+	<result column="HITS" property="hits" />
+	<result column="PAGENUMBER" property="pageNumber" />
+	<result column="ARTICLECATEGORY" property="articleCategory" />
+	<result column="TAGS" property="tags" />
+  </resultMap>
+  
+  <sql id="selectBase" >
+  	select ID,CREATEDATE,MODIFYDATE,TITLE,AUTHOR,CONTENT,SEOTITLE,SEOKEYWORDS,SEODESCRIPTION,ISPUBLICATION,ISTOP,HITS,PAGENUMBER,ARTICLECATEGORY,TAGS
+    from ARTICLE A
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="Long" >
+    <include refid="selectBase" />
+    where A.ID = #{ id}
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap" >
+    <include refid="selectBase" />
+  </select>
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="java.util.Map">
+    <include refid="selectBase" />
+     limit #{ first} , #{ count}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap" parameterType="com.tihai.common.Pageable" statementType="STATEMENT">
+    <include refid="selectBase" />
+    <where>
+    <if test="searchValue != null and searchValue != ''">
+    ${searchProperty} like '%${searchValue}%'
+    </if>
+    </where>
+    <if test="orderProperty != null and orderProperty != ''">
+     order by ${ orderProperty} 
+	     <if test="orderDirection != null and orderDirection != ''">
+	      ${ orderDirection} 
+	    </if>
+    </if>
+     limit ${ first} , ${ pageSize}
+  </select>
+  
+  <select id="countAll" resultType="Long">
+    select count(ID)
+    from ARTICLE A
+  </select>
+  
+  <select id="count" resultType="Long" parameterType="String">
+    select count(ID)
+    from ARTICLE A 
+    <if test="conditions != null and conditions != ''">
+    where #{ conditions}
+    </if>
+  </select>
+  
+  <insert id="save" parameterType="com.tihai.entity.Article">
+  		insert into ARTICLE (CREATEDATE,MODIFYDATE,TITLE,AUTHOR,CONTENT,SEOTITLE,SEOKEYWORDS,SEODESCRIPTION,ISPUBLICATION,ISTOP,HITS,PAGENUMBER,ARTICLECATEGORY,TAGS)
+  		values (#{ createDate},
+  				#{ modifyDate},
+		  		#{ title},
+		  		#{ author},
+		  		#{ content},
+		  		#{ seoTitle},
+		  		#{ seoKeywords},
+		  		#{ seoDescription},
+		  		#{ isPublication},
+		  		#{ isTop},
+		  		#{ hits},
+		  		#{ pageNumber},
+		  		#{ articleCategory},
+		  		#{ tags}		  		)
+  		 <selectKey resultType="Long" keyProperty="id" >
+		  SELECT LAST_INSERT_ID() as ID
+		 </selectKey>
+  </insert>
+  
+  <update id="update" parameterType="com.tihai.entity.Article" >
+	    update ARTICLE
+	    set
+			MODIFYDATE = #{ modifyDate},
+	  		TITLE = #{ title},
+	  		AUTHOR = #{ author},
+	  		CONTENT = #{ content},
+	  		SEOTITLE = #{ seoTitle},
+	  		SEOKEYWORDS = #{ seoKeywords},
+	  		SEODESCRIPTION = #{ seoDescription},
+	  		ISPUBLICATION = #{ isPublication},
+	  		ISTOP = #{ isTop},
+	  		HITS = #{ hits},
+	  		PAGENUMBER = #{ pageNumber},
+	  		ARTICLECATEGORY = #{ articleCategory},
+	  		TAGS = #{ tags}	    where  ID = #{ id}
+  </update>
+  
+  <select id="deleteById" parameterType="Long" >
+    delete from ARTICLE A
+    where A.ID = #{ id}
+  </select>
+  
+  <select id="delete" parameterType="com.tihai.entity.Article" >
+    delete from ARTICLE A
+    where A.ID = #{ id}
+  </select>
+  
+  <select id="findForUpdate" parameterType="Long" >
+    <include refid="selectBase" />
+    where A.ID = #{ id}
+    for update
+  </select>
+  
+  <select id="getIdentifier" resultType="Long" parameterType="com.tihai.entity.Article" >
+  	SELECT #{ id} FROM DUAL 
+  </select>
+  
+  
+  
+  
+</mapper>

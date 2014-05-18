@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tihai.dao.AdminDao" >
+	
+  <resultMap id="BaseResultMap" type="com.tihai.entity.Admin" >
+	<result column="ID" property="id" />
+	<result column="CREATEDATE" property="createDate" />
+	<result column="MODIFYDATE" property="modifyDate" />
+	<result column="USERNAME" property="username" />
+	<result column="PASSWORD" property="password" />
+	<result column="EMAIL" property="email" />
+	<result column="NAME" property="name" />
+	<result column="DEPARTMENT" property="department" />
+	<result column="ISENABLED" property="isEnabled" />
+	<result column="ISLOCKED" property="isLocked" />
+	<result column="LOGINFAILURECOUNT" property="loginFailureCount" />
+	<result column="LOCKEDDATE" property="lockedDate" />
+	<result column="LOGINDATE" property="loginDate" />
+	<result column="LOGINIP" property="loginIp" />
+  </resultMap>
+  
+  <sql id="selectBase" >
+  	select ID,CREATEDATE,MODIFYDATE,USERNAME,PASSWORD,EMAIL,NAME,DEPARTMENT,ISENABLED,ISLOCKED,LOGINFAILURECOUNT,LOCKEDDATE,LOGINDATE,LOGINIP
+    from ADMIN A
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="Long" >
+    <include refid="selectBase" />
+    where A.ID = #{ id}
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap" >
+    <include refid="selectBase" />
+  </select>
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="java.util.Map">
+    <include refid="selectBase" />
+     limit #{ first} , #{ count}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap" parameterType="com.tihai.common.Pageable" statementType="STATEMENT">
+    <include refid="selectBase" />
+    <where>
+    <if test="searchValue != null and searchValue != ''">
+    ${searchProperty} like '%${searchValue}%'
+    </if>
+    </where>
+    <if test="orderProperty != null and orderProperty != ''">
+     order by ${ orderProperty} 
+	     <if test="orderDirection != null and orderDirection != ''">
+	      ${ orderDirection} 
+	    </if>
+    </if>
+     limit ${ first} , ${ pageSize}
+  </select>
+  
+  <select id="countAll" resultType="Long">
+    select count(ID)
+    from ADMIN A
+  </select>
+  
+  <select id="count" resultType="Long" parameterType="String">
+    select count(ID)
+    from ADMIN A 
+    <if test="conditions != null and conditions != ''">
+    where #{ conditions}
+    </if>
+  </select>
+  
+  <insert id="save" parameterType="com.tihai.entity.Admin">
+  		insert into ADMIN (CREATEDATE,MODIFYDATE,PASSWORD,EMAIL,NAME,DEPARTMENT,ISENABLED,ISLOCKED,LOGINFAILURECOUNT,LOCKEDDATE,LOGINDATE,LOGINIP)
+  		values (#{ createDate},
+  				#{ modifyDate},
+		  		#{ username},
+		  		#{ password},
+		  		#{ email},
+		  		#{ name},
+		  		#{ department},
+		  		#{ isEnabled},
+		  		#{ isLocked},
+		  		#{ loginFailureCount},
+		  		#{ lockedDate},
+		  		#{ loginDate},
+		  		#{ loginIp}
+		  		)
+  		 <selectKey resultType="Long" keyProperty="id" >
+		  SELECT LAST_INSERT_ID() as ID
+		 </selectKey>
+  </insert>
+  
+  <update id="update" parameterType="com.tihai.entity.Admin" >
+	    update ADMIN
+	    set
+			MODIFYDATE = #{ modifyDate},
+			PASSWORD = #{ password},
+			EMAIL = #{ email},
+			NAME = #{ name},
+			DEPARTMENT = #{ department},
+			ISENABLED = #{ isEnabled},
+			ISLOCKED = #{ isLocked},
+			LOGINFAILURECOUNT = #{ loginFailureCount},
+			LOCKEDDATE = #{ lockedDate},
+			LOGINDATE = #{ loginDate},
+			LOGINIP = #{ loginIp}
+	    where  ID = #{ id}
+  </update>
+  
+  <select id="deleteById" parameterType="Long" >
+    delete from ADMIN A
+    where A.ID = #{ id}
+  </select>
+  
+  <select id="delete" parameterType="com.tihai.entity.Admin" >
+    delete from ADMIN A
+    where A.ID = #{ id}
+  </select>
+  
+  <select id="findForUpdate" parameterType="Long" >
+    <include refid="selectBase" />
+    where A.ID = #{ id}
+    for update
+  </select>
+  
+  <select id="findByUsername" resultMap="BaseResultMap" parameterType="String" >
+    <include refid="selectBase" />
+    where A.USERNAME = #{ username}
+  </select>
+  
+  <select id="usernameExists" resultType="Boolean" parameterType="String" >
+  	SELECT 1 FROM DUAL 
+		WHERE EXISTS
+		(
+		    select NULL
+		    from ADMIN A
+		    where A.USERNAME = #{ username}
+		)
+  </select>
+  
+  <select id="getIdentifier" resultType="Long" parameterType="com.tihai.entity.Admin" >
+  	SELECT #{ id} FROM DUAL 
+  </select>
+  
+  
+  
+  
+</mapper>

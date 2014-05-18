@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="wangDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.WangDao" />
+	</bean>
+
+	<bean id="adminDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.AdminDao" />
+	</bean>
+	
+	<bean id="roleDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.RoleDao" />
+	</bean>
+	
+	<bean id="areaDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.AreaDao" />
+	</bean>
+	<bean id="articleDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.ArticleDao" />
+	</bean>
+	<bean id="brandDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.BrandDao" />
+	</bean>
+	<bean id="cartDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.CartDao" />
+	</bean>
+	<bean id="couponCodeDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.CouponCodeDao" />
+	</bean>
+	<bean id="depositDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.DepositDao" />
+	</bean>
+	<bean id="memberDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.MemberDao" />
+	</bean>
+	<bean id="memberRankDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.MemberRankDao" />
+	</bean>
+	<bean id="messageDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.MessageDao" />
+	</bean>
+	<bean id="orderDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.OrderDao" />
+	</bean>
+	<bean id="orderItemDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.OrderItemDao" />
+	</bean>
+	<bean id="orderLogDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.OrderLogDao" />
+	</bean>
+	<bean id="paymentDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.PaymentDao" />
+	</bean>
+	<bean id="productDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.ProductDao" />
+	</bean>
+	<bean id="promotionDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.PromotionDao" />
+	</bean>
+	<bean id="refundsDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.RefundsDao" />
+	</bean>
+	<bean id="returnsDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.ReturnsDao" />
+	</bean>
+	<bean id="shippingDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.ShippingDao" />
+	</bean>
+	<bean id="snDao" class="org.springframework.orm.ibatis3.MapperFactoryBean">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+		<property name="mapperInterface" value="com.tihai.dao.SnDao" />
+	</bean>
+</beans>
