@@ -53,7 +53,7 @@ public class CaptchaEngine extends ListImageCaptchaEngine {
 	private static final String CHAR_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	/** 随机背景图片路径 */
-	private static final String BACKGROUND_IMAGE_PATH = "/net/shopxx/captcha/";
+	private static final String BACKGROUND_IMAGE_PATH = "/captcha/";
 
 	/**
 	 * 随机字体

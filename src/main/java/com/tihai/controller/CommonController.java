@@ -53,8 +53,8 @@ public class CommonController implements ServletContextAware {
 	private String systemVersion;
 	@Value("${system.description}")
 	private String systemDescription;
-	@Value("${system.show_powered}")
-	private Boolean systemShowPowered;
+//	@Value("${system.show_powered}")
+//	private Boolean systemShowPowered;
 	@Resource(name = "areaServiceImpl")
 	private AreaService areaService;
 	@Resource(name = "captchaServiceImpl")
@@ -91,7 +91,7 @@ public class CommonController implements ServletContextAware {
 		model.addAttribute("systemName", systemName);
 		model.addAttribute("systemVersion", systemVersion);
 		model.addAttribute("systemDescription", systemDescription);
-		model.addAttribute("systemShowPowered", systemShowPowered);
+//		model.addAttribute("systemShowPowered", systemShowPowered);
 		model.addAttribute("javaVersion", System.getProperty("java.version"));
 		model.addAttribute("javaHome", System.getProperty("java.home"));
 		model.addAttribute("osName", System.getProperty("os.name"));
