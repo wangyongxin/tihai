@@ -61,8 +61,8 @@
   
   <insert id="save" parameterType="com.tihai.entity.${(entity)!}">
   		insert into ${(entity?upper_case)!} (CREATEDATE,MODIFYDATE,<#list properties as property>${property?upper_case}<#if property_index != properties?size-1>,</#if></#list>)
-  		values (<#noparse>#{ createDate}</#noparse>,
-  				<#noparse>#{ modifyDate}</#noparse>,
+  		values (now(),
+  				now(),
 		  		<#list properties as property>
 		  		<#noparse>#{ </#noparse>${property}<#noparse>}</#noparse><#if property_index != properties?size-1>,
 		  		</#if>
@@ -76,7 +76,7 @@
   <update id="update" parameterType="com.tihai.entity.${(entity)!}" >
 	    update ${(entity?upper_case)!}
 	    set
-			MODIFYDATE = <#noparse>#{ modifyDate}</#noparse>,
+			MODIFYDATE = now(),
 			<#list properties as property>
 	  		${property?upper_case} = <#noparse>#{ </#noparse>${property}<#noparse>}</#noparse><#if property_index != properties?size-1>,
 	  		</#if>

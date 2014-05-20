@@ -62,8 +62,8 @@
   
   <insert id="save" parameterType="com.tihai.entity.Role">
   		insert into ROLE (CREATEDATE,MODIFYDATE,NAME,ISSYSTEM,DESCRIPTION)
-  		values (#{ createDate},
-  				#{ modifyDate},
+  		values (now(),
+  				now(),
 		  		#{ name},
 		  		#{ isSystem},
 		  		#{ description}
@@ -76,7 +76,7 @@
   <update id="update" parameterType="com.tihai.entity.Role" >
 	    update ROLE
 	    set
-			MODIFYDATE = #{ modifyDate},
+			MODIFYDATE = now(),
 			NAME = #{ name},
 			EMAIL = #{ email},
 			NAME = #{ name},

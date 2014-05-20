@@ -70,8 +70,8 @@
   
   <insert id="save" parameterType="com.tihai.entity.Article">
   		insert into ARTICLE (CREATEDATE,MODIFYDATE,TITLE,AUTHOR,CONTENT,SEOTITLE,SEOKEYWORDS,SEODESCRIPTION,ISPUBLICATION,ISTOP,HITS,PAGENUMBER,ARTICLECATEGORY,TAGS)
-  		values (#{ createDate},
-  				#{ modifyDate},
+  		values (now(),
+  				now(),
 		  		#{ title},
 		  		#{ author},
 		  		#{ content},
@@ -92,7 +92,7 @@
   <update id="update" parameterType="com.tihai.entity.Article" >
 	    update ARTICLE
 	    set
-			MODIFYDATE = #{ modifyDate},
+			MODIFYDATE = now(),
 	  		TITLE = #{ title},
 	  		AUTHOR = #{ author},
 	  		CONTENT = #{ content},

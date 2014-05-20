@@ -68,9 +68,9 @@
   </select>
   
   <insert id="save" parameterType="com.tihai.entity.Admin">
-  		insert into ADMIN (CREATEDATE,MODIFYDATE,PASSWORD,EMAIL,NAME,DEPARTMENT,ISENABLED,ISLOCKED,LOGINFAILURECOUNT,LOCKEDDATE,LOGINDATE,LOGINIP)
-  		values (#{ createDate},
-  				#{ modifyDate},
+  		insert into ADMIN (CREATEDATE,MODIFYDATE,USERNAME,PASSWORD,EMAIL,NAME,DEPARTMENT,ISENABLED,ISLOCKED,LOGINFAILURECOUNT,LOCKEDDATE,LOGINDATE,LOGINIP)
+  		values (now(),
+  				now(),
 		  		#{ username},
 		  		#{ password},
 		  		#{ email},
@@ -91,7 +91,7 @@
   <update id="update" parameterType="com.tihai.entity.Admin" >
 	    update ADMIN
 	    set
-			MODIFYDATE = #{ modifyDate},
+			MODIFYDATE = now(),
 			PASSWORD = #{ password},
 			EMAIL = #{ email},
 			NAME = #{ name},
