@@ -102,7 +102,7 @@ public class Article extends BaseEntity {
 		try {
 			File shopxxXmlFile = new ClassPathResource(CommonAttributes.SETTING_XML_PATH).getFile();
 			org.dom4j.Document document = new SAXReader().read(shopxxXmlFile);
-			org.dom4j.Element element = (org.dom4j.Element) document.selectSingleNode("/shopxx/template[@id='articleContent']");
+			org.dom4j.Element element = (org.dom4j.Element) document.selectSingleNode("/tihai/template[@id='articleContent']");
 			staticPath = element.attributeValue("staticPath");
 		} catch (Exception e) {
 			e.printStackTrace();

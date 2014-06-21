@@ -318,7 +318,7 @@ public class Product extends BaseEntity {
 		try {
 			File settingXmlFile = new ClassPathResource(CommonAttributes.SETTING_XML_PATH).getFile();
 			org.dom4j.Document document = new SAXReader().read(settingXmlFile);
-			org.dom4j.Element element = (org.dom4j.Element) document.selectSingleNode("/setting/template[@id='productContent']");
+			org.dom4j.Element element = (org.dom4j.Element) document.selectSingleNode("/tihai/template[@id='productContent']");
 			staticPath = element.attributeValue("staticPath");
 		} catch (Exception e) {
 			e.printStackTrace();
