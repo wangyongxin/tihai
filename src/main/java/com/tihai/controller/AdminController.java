@@ -24,7 +24,7 @@ import com.tihai.service.AdminService;
 import com.tihai.service.RoleService;
 
 /**
- * Controller - ¹ÜÀíÔ±
+ * Controller - ç®¡ç†å‘˜
  * 
  * @author SHOP++ Team
  * @version 3.0
@@ -39,7 +39,7 @@ public class AdminController extends BaseController {
 	private RoleService roleService;
 
 	/**
-	 * ¼ì²éÓÃ»§ÃûÊÇ·ñ´æÔÚ
+	 * æ£€æŸ¥ç”¨æˆ·åæ˜¯å¦å­˜åœ¨
 	 */
 	@RequestMapping(value = "/check_username", method = RequestMethod.GET)
 	public @ResponseBody
@@ -55,7 +55,7 @@ public class AdminController extends BaseController {
 	}
 
 	/**
-	 * Ìí¼Ó
+	 * æ·»åŠ 
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String add(ModelMap model) {
@@ -64,7 +64,7 @@ public class AdminController extends BaseController {
 	}
 
 	/**
-	 * ±£´æ
+	 * ä¿å­˜
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Admin admin, Long[] roleIds, RedirectAttributes redirectAttributes) {
@@ -88,7 +88,7 @@ public class AdminController extends BaseController {
 	}
 
 	/**
-	 * ±à¼­
+	 * ç¼–è¾‘
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String edit(Long id, ModelMap model) {
@@ -98,7 +98,7 @@ public class AdminController extends BaseController {
 	}
 
 	/**
-	 * ¸üĞÂ
+	 * æ›´æ–°
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(Admin admin, Long[] roleIds, RedirectAttributes redirectAttributes) {
@@ -129,7 +129,7 @@ public class AdminController extends BaseController {
 	}
 
 	/**
-	 * ÁĞ±í
+	 * åˆ—è¡¨
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Pageable pageable, ModelMap model) {
@@ -138,7 +138,7 @@ public class AdminController extends BaseController {
 	}
 
 	/**
-	 * É¾³ı
+	 * åˆ é™¤
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public @ResponseBody
